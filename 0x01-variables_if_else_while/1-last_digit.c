@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <std.time>
+#include <time.h>
 #include <stdio.h>
 /**
  * main - prints different values
