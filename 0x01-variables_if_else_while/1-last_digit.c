@@ -1,12 +1,20 @@
 #include <stdlib.h>
+
 #include <time.h>
+
 #include <stdio.h>
+
+
 /**
  * main - prints different values
  * Return: Always (Success)
+ *
  */
+
 int main(void)
+
 {
+
 	int n, lastd;
 
 	srand(time(0));
