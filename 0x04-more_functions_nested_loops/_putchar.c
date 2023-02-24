@@ -1,2 +1,1 @@
-/* header file DefinedVars.h*/
-int x = 0;
+#include "main.h"
