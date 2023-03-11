@@ -4,7 +4,7 @@
 /**
  * main - print number of arguments passed into it
  * @argc: count arguments
- * @argc: arguments
+ * @argv: arguments
  *
  * Return: Always 0 (Success)
  */
