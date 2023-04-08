@@ -9,12 +9,12 @@
  * @filename: name of the file containing letters
  * @letters: number of letters
  *
- * Return: 0 if filename is NULL
+ * Return: number of bytes
  * 0 if file cannot be read or opened
  * 0 if write fails
  */
 
-ssize_t read_textfile(const char *filename, size_t letters);
+ssize_t read_textfile(const char *filename, size_t letters)
 {
 	FILE *filename;
 
