@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /**
  * read_textfile - read a text file and prints it to posix stdout
