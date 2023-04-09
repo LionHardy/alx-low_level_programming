@@ -8,15 +8,13 @@
  * read_textfile - read a text file and prints it to posix stdout
  * @filename: name of the file containing letters
  * @letters: number of letters
- *
  * Return: number of byte, 0 if write fails
  */
-
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	FILE *file;
 	char *buffer;
-	size_t num_read, num_written;
+	ssize_t bytes_read;
 
 	if (filename == NULL)
 	{
@@ -38,7 +36,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	buffer = (char *) malloc(sizeof(char) * (letters + 1));
+	buffer = malloc(letters + 1);
 
 	if (buffer == NULL)
 	{
@@ -47,26 +45,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	num_read = fread(buffer, sizeof(char), letters, file);
+	bytes_read = fread(buffer, sizeof(char), letters, file);
 
-	if (num_read == 0)
+	if (bytes_read < 0 || write(STDOUT_FILENO, buffer, bytes_read) != bytes_read)
 	{
 		free(buffer);
 		fclose(file);
-		fprintf(stderr, "Error: could not write to stdout\n");
 		return (0);
 	}
 
-	num_written = write(STDOUT_FILENO, buffer, num_read);
-
-	if (num_written != num_read)
-	{
-		free(buffer);
-		fclose(file);
-		fprintf(stderr, "Error: could not write to stdout\n");
-		return (0);
-	}
 	free(buffer);
 	fclose(file);
-	return (num_written);
+
+	return (bytes_read);
 }
