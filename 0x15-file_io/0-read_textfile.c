@@ -30,7 +30,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 
-	file = fopen(filename, "r");
+	file = fopen(filename, "O_RDONLY");
 
 	if (file == NULL)
 	{
